@@ -25,16 +25,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(Long id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public String deleteUser(Long id) {
-        return null;
+        User existingUser = repository.findById(id).orElse(null);
+        if(existingUser!=null) repository.deleteById(id);
+        return "User with id "+id+" deleted successfully!";
     }
 
     @Override
     public String updateUser(User user) {
-        return null;
+        User existingUser = repository.findById(user.getId()).orElse(null);
+        if(existingUser!=null) {
+            existingUser.setFirstName(user.getFirstName());
+            existingUser.setLastName(user.getLastName());
+            existingUser.setEmail(user.getEmail());
+            repository.save(existingUser);
+        }
+        return "User with id "+user.getId()+" updated successfully!";
     }
 }

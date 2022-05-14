@@ -12,13 +12,12 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    //a simple example
+    //a simple example with requests
     @PostMapping("/addUser")
     public String addUser(@RequestBody User user) {
         return service.addUser(user);
     }
 
-    //a simple example
     @GetMapping("/users")
     public List<User> getUsers() {
         return service.getUsers();
@@ -26,16 +25,16 @@ public class UserController {
 
     @GetMapping("/users/{id}")
     public User getUserById(@PathVariable Long id) {
-        return null;
+        return service.getUserById(id);
     }
 
     @DeleteMapping("/users/{id}")
     public String deleteUser(@PathVariable Long id) {
-        return null;
+        return service.deleteUser(id);
     }
 
     @PutMapping("/updateUser")
     public String updateUser(@RequestBody User user) {
-        return null;
+        return service.updateUser(user);
     }
 }

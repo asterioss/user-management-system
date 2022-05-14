@@ -6,13 +6,14 @@ import javax.validation.constraints.Size;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Size(max = 100)
     private String firstName;
     @Size(max = 100)
     private String lastName;
+
     private String email;
 
     public User() {}
